@@ -31,6 +31,8 @@ const Promise = require('bluebird');
 const debugRequest = Debug('quickbase:request');
 const debugResponse = Debug('quickbase:response');
 
+const IS_BROWSER = (typeof global !== 'undefined' && typeof window !== 'undefined' && global === window) || (typeof global === 'undefined' && typeof window !== 'undefined');
+
 /* Default Settings */
 const defaults = {
 	server: 'api.quickbase.com',
@@ -40,7 +42,7 @@ const defaults = {
 	clientSecret: '',
 	userToken: '',
 
-	userAgent: 'node-quickbase/v' + VERSION,
+	userAgent: 'node-quickbase/v' + VERSION + '/' + (IS_BROWSER && window.navigator ? window.navigator.userAgent : 'nodejs/' + process.version),
 
 	connectionLimit: 10,
 	errorOnConnectionLimit: false
@@ -180,7 +182,7 @@ if(typeof define === 'function' && define.amd){
 	});
 }
 
-if((typeof global !== 'undefined' && typeof window !== 'undefined' && global === window) || (typeof global === 'undefined' && typeof window !== 'undefined')){
+if(IS_BROWSER){
 	(global || window).QuickBase = QuickBase;
 
 	if(window.location.search.match(/debug=1/i)){
