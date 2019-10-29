@@ -42,7 +42,7 @@ const defaults = {
 	clientSecret: '',
 	userToken: '',
 
-	userAgent: 'node-quickbase/v' + VERSION + '/' + (IS_BROWSER && window.navigator ? window.navigator.userAgent : 'nodejs/' + process.version),
+	userAgent: 'node-quickbase/v' + VERSION + ' ' + (IS_BROWSER && window.navigator ? window.navigator.userAgent : 'nodejs/' + process.version),
 
 	connectionLimit: 10,
 	errorOnConnectionLimit: false
