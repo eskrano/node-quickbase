@@ -78,7 +78,7 @@ class QuickBase {
 
 	_request(options){
 		return this.throttle.acquire((resolve, reject) => {
-			const id = 0 + this._id;
+			const id = 0 + (++this._id);
 
 			debugRequest(id, options);
 
