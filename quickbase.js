@@ -71,7 +71,8 @@ class QuickBase {
 				'realmHostName': this.settings.realm,
 				'client_id': this.settings.clientId,
 				'client_secret': this.settings.clientSecret
-			}
+			},
+			json: true
 		};
 	}
 
